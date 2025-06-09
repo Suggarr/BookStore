@@ -1,4 +1,7 @@
+using BookStore.Application.Services;
 using BookStore.DataAccess;
+using BookStore.DataAccess.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,10 +14,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BookStoreDbContext>(
     options =>
     {
-        options.UseMySql(builder.Configuration.GetConnectionString(nameof(BookStoreDbContext)));
+        options.UseNpgsql(builder.Configuration.GetConnectionString("BooksStoreDbContext"));
     }
     );
-
+builder.Services.AddScoped<IBooksService, BooksService>();
+builder.Services.AddScoped<IBooksRepository, BooksRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,7 +27,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

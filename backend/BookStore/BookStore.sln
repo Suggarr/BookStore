@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.API", "BookStore.API.csproj", "{3173083E-984C-4A1E-8C0B-21EC957289AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.API", "BookStore.API\BookStore.API.csproj", "{3173083E-984C-4A1E-8C0B-21EC957289AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Core", "..\BookStore.Core\BookStore.Core.csproj", "{9E42940C-29DA-43DA-AD23-7C75F2BBB8E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Core", "BookStore.Core\BookStore.Core.csproj", "{9E42940C-29DA-43DA-AD23-7C75F2BBB8E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.DataAccess", "..\BookStore.DataAccess\BookStore.DataAccess.csproj", "{AAA41B68-0C5E-4D1E-AF1E-A9FB187B2E82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.DataAccess", "BookStore.DataAccess\BookStore.DataAccess.csproj", "{AAA41B68-0C5E-4D1E-AF1E-A9FB187B2E82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Application", "BookStore.Application\BookStore.Application.csproj", "{5604567D-92AB-407F-AD96-C6A6F3C335C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{AAA41B68-0C5E-4D1E-AF1E-A9FB187B2E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA41B68-0C5E-4D1E-AF1E-A9FB187B2E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA41B68-0C5E-4D1E-AF1E-A9FB187B2E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5604567D-92AB-407F-AD96-C6A6F3C335C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5604567D-92AB-407F-AD96-C6A6F3C335C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5604567D-92AB-407F-AD96-C6A6F3C335C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5604567D-92AB-407F-AD96-C6A6F3C335C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

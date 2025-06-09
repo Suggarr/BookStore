@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.DataAccess.Repositories
 {
-    public class BookRepository : IBookRepository
+    public class BooksRepository : IBooksRepository
     {
         private readonly BookStoreDbContext _context;
-        public BookRepository(BookStoreDbContext context)
+        public BooksRepository(BookStoreDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<Book>> GetBooks()
+        public async Task<List<Book>> Get()
         {
             var booksEntities = await _context.Books
                 .AsNoTracking()
@@ -48,7 +48,7 @@ namespace BookStore.DataAccess.Repositories
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.Title, b => title)
                     .SetProperty(b => b.Description, b => description)
-                    .SetProperty(b => b.Price, b => price);
+                    .SetProperty(b => b.Price, b => price));
 
             return id;
         }

@@ -30,11 +30,11 @@ namespace BookStore.Core.Models
         {
 
             var error = string.Empty;
-            if (string.IsNullOrEmpty(error) || title.Length > MAX_TITLE_LENGTH)
+            if (string.IsNullOrEmpty(title) || title.Length > MAX_TITLE_LENGTH)
             {
                 error = $"Title can not be empty or longer than {MAX_TITLE_LENGTH} symbols";
             }
-            var book = new Book (id, title, description, price);
+                var book = new Book (id, title, description, price);
             return (book, error);
         }
     }
