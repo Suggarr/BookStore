@@ -33,4 +33,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors(x => 
+{
+    x.WithHeaders().AllowAnyOrigin();
+    x.WithOrigins("http://localhost:3000/books");
+    x.WithMethods().AllowAnyMethod();
+});
+
 app.Run();
