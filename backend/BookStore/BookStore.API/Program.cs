@@ -10,7 +10,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 builder.Services.AddDbContext<BookStoreDbContext>(
     options =>
     {
@@ -30,14 +29,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseCors(policy =>
+    policy.WithOrigins("http://localhost:3000")
+          .AllowAnyMethod()
+          .AllowAnyHeader());
+
 
 app.MapControllers();
 
-app.UseCors(x => 
-{
-    x.WithHeaders().AllowAnyOrigin();
-    x.WithOrigins("http://localhost:3000/books");
-    x.WithMethods().AllowAnyMethod();
-});
 
 app.Run();

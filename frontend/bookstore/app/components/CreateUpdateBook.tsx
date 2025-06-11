@@ -1,25 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BookRequest } from "../services/books";
-import { Book } from "../Models/Book";
 import Modal from 'antd/es/modal/Modal'; 
 import Input from 'antd/es/input/Input'; 
 import TextArea from 'antd/es/input/TextArea'; 
 
-interface Props{
+interface Props {
     mode: Mode;
-    values: Book[];
+    values: Book;
     isModalOpen: boolean;
-    handleCancel: () =>void;
+    handleCancel: () => void;
     handleCreate: (request: BookRequest) => void;
     handleUpdate: (id: string, request: BookRequest) => void; 
 }
 
-export enum Mode{
+export enum Mode {
     Create,
     Edit,
 } 
 
-export const CreateUpdateBooks = ({
+export const CreateUpdateBook = ({
     mode,
     values,
     isModalOpen,
@@ -27,9 +26,18 @@ export const CreateUpdateBooks = ({
     handleCreate,
     handleUpdate,
 }: Props) => {
-    const [title, setTitle] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
-    const [price, setPrice] = useState<number>(1);
+    const [title, setTitle] = useState<string>(values.title || "");
+    const [description, setDescription] = useState<string>(values.description || "");
+    const [price, setPrice] = useState<number>(values.price || 1);
+
+    useEffect(() => {
+        if (mode === Mode.Edit) {
+            setTitle(values.title);
+            setDescription(values.description);
+            setPrice(values.price);
+        }
+    }, [mode, values]);
+    
     const handleOnOk = async () => {
         const bookRequest = {
             title,
@@ -37,37 +45,36 @@ export const CreateUpdateBooks = ({
             price,
         };
 
-        if (mode === Mode.Create) {
-            handleCreate(bookRequest);
-        } else if (values.length > 0) {
-            handleUpdate(values[0].id, bookRequest);
-        }
-
+        mode === Mode.Create ? handleCreate(bookRequest) : handleUpdate(values.id, bookRequest);
     };
+
     return (
-        <Modal title={mode === Mode.Create ? "Добавить книгу" : "Редактировать книгу"} open={isModalOpen}
+        <Modal 
+            title={mode === Mode.Create ? "Добавить книгу" : "Редактировать книгу"} 
+            open={isModalOpen}
             cancelText={"Отмена"}
             onOk={handleOnOk}
             onCancel={handleCancel}
         >
             <div className="book_modal">
-                <Input>
+                <Input 
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Название"
-                </Input>
-                <TextArea>
+                />
+                <TextArea 
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    autoSize={{minrows:3 ,maxRows: 3}}
-                    placeholder="Название"
-                </TextArea>
-                <Input>
+                    autoSize={{ minRows: 3, maxRows: 3 }}
+                    placeholder="Описание"
+                />
+                <Input 
+                    type="number"
                     value={price}
                     onChange={(e) => setPrice(Number(e.target.value))}
                     placeholder="Цена"
-                </Input>
+                />
             </div>
         </Modal>
-    )
-}
+    );
+};

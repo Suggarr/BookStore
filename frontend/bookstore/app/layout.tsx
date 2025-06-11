@@ -18,11 +18,11 @@ export default function RootLayout({
       <body>
         <Layout style ={{ minHeight: "100vh"}}>
             <Header>
-              <Menu   theme = "dark" mode ="horizontal" items ={items} style = {{flex: 1, minWidth: 0}}/> 
+              <Menu theme = "dark" mode ="horizontal" items ={items} style = {{flex: 1, minWidth: 0}}/> 
             </Header>{""}
             <Content style = {{padding: " 0 48 px"}}>{children}</Content>
             <Footer style = {{textAlign: "center"}}>
-              Книжный магазин 2025, Илья Сахаревич 
+              Библиотечное 2025, Илья Сахаревич 
             </Footer>
         </Layout>
       </body>

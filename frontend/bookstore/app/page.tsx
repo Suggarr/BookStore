@@ -1,3 +1,3 @@
 export default function Home() {
-  return <h1>Домашняя страница</h1>
+  return <h1>Домашняя страница Ильи Сахаревича</h1>
 }

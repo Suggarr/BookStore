@@ -4,9 +4,7 @@ import Button from "antd/es/button";
 import { Books } from "../components/Books"
 import { useEffect, useState } from "react";
 import { BookRequest, createBook, getAllBooks, updateBook, deleteBook } from "../services/books";
-// import Title from "antd/es/typography/Title";
-import { Typography } from "antd";
-const { Title } = Typography;
+import Title from "antd/es/typography/Title";
 import { CreateUpdateBook, Mode} from "../components/CreateUpdateBook";
 
 export default function BooksPage() {
@@ -67,7 +65,6 @@ export default function BooksPage() {
             setLoading(false);
             setBooks(books);
         };
-
         getBooks();
     }, [])
 
